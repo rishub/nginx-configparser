@@ -32,6 +32,11 @@ TEST_F(ConfigStringTest, NoSemi) {
 	EXPECT_FALSE(ParseString("lol"));
 }
 
+TEST_F(ConfigStringTest, NumStaements) {
+	EXPECT_TRUE(ParseString("foo bar; statement;"));
+	EXPECT_EQ(2, out_config_.statements_.size());
+}
+
 TEST(NginxConfigParserTest, MissingBrace) {
   NginxConfigParser parser;
   NginxConfig out_config;
